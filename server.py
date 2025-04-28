@@ -3,9 +3,8 @@
 # Shreya Somayajula  - svs2137
 # Vaibhav Sourirajan - vs2787
 
-from flask import Flask
-from flask import render_template
-from flask import Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
+
 app = Flask(__name__)
 
 # GLOBAL VARIABLES
@@ -15,12 +14,17 @@ app = Flask(__name__)
 # Home
 @app.route('/')
 def home():
-   return render_template('home.html')
+    return render_template('home.html')
 
-# Learn
+# Learn (static)
 @app.route('/learn')
 def learn():
-    return render_template('learn.html')
+    return redirect(url_for('learn_lesson', lesson_number=1))
+
+# Learn (dynamic - with lesson number)
+@app.route('/learn/<int:lesson_number>')
+def learn_lesson(lesson_number):
+    return render_template('learn.html', lesson_number=lesson_number)
 
 # Quiz
 @app.route('/quiz')
@@ -30,4 +34,4 @@ def quiz():
 # AJAX FUNCTIONS
 
 if __name__ == '__main__':
-   app.run(debug = True, port=5001)
+    app.run(debug=True, port=5001)

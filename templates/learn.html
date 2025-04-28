@@ -1,8 +1,80 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<h1>MEDIEVAL ERA - Lesson {{ lesson_number }}</h1>
+<h2>Hildegard von Bingen – Columba Aspexit</h2>
 
-<!-- TO-DO -->
-<h1>TO-DO: Learn</h1>
+<!-- Embedded YouTube Video -->
+<div style="text-align: center;">
+    <iframe id="video" width="560" height="315" 
+        src="https://www.youtube.com/embed/BpmMeIQywYc?enablejsapi=1" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+</div>
+
+<!-- Text that will appear at the right time -->
+<div id="timestamp-text" style="margin-top: 20px; font-size: 18px; text-align: center;">
+    <!-- Text will be inserted here -->
+</div>
+
+<!-- Script to control showing text at certain times -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video', {
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        setInterval(checkTime, 500); // Check every 0.5 seconds
+    }
+
+    var shownTexts = {
+        '22': false,
+        '32': false
+    };
+
+    function checkTime() {
+        if (player && player.getCurrentTime) {
+            var time = player.getCurrentTime();
+
+            if (time >= 22 && !shownTexts['22']) {
+                document.getElementById('timestamp-text').innerHTML = 
+                    "<strong>0:22:</strong> One singer sings the main melody, instruments play 1 singular chord as background.";
+                shownTexts['22'] = true;
+            }
+            if (time >= 32 && !shownTexts['32']) {
+                document.getElementById('timestamp-text').innerHTML = 
+                    "<strong>0:32:</strong> Other singers join in, but they sing the <em>exact same</em> melody — this is called <strong><u>homophony</u></strong>, which was used prominently in Medieval music.";
+                shownTexts['32'] = true;
+            }
+        }
+    }
+
+    function onPlayerStateChange(event) {
+        // Optional: reset texts if video restarts
+        if (event.data == YT.PlayerState.PLAYING) {
+            // Nothing
+        }
+    }
+</script>
+
+<!-- Next Piece Button -->
+<div style="text-align: center; margin-top: 30px;">
+    <a href="/learn/{{ lesson_number + 1 }}" style="text-decoration: none;">
+        <div style="display: inline-block; background-color: #0056a6; color: white; padding: 15px 30px; border-radius: 15px; font-size: 18px;">
+            NEXT PIECE →
+        </div>
+    </a>
+</div>
 
 {% endblock %}
