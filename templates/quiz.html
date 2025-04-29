@@ -1,8 +1,88 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Questions</h2>
+            <div class="list-group">
+                {% for quiz in data.quizzes %}
+                <a href="{{ url_for('quiz', quiz_num=quiz['quiz_num']) }}" 
+                   class="list-group-item list-group-item-action {% if quiz['attempts'] > 0 %}quiz-completed{% endif %} {% if mainQuestion['quiz_num'] == quiz['quiz_num'] %}active{% endif %}">
+                    {% if quiz['option_chosen'] == quiz['answer'] %}
+                    <i class="fas fa-check-circle text-success"></i>
+                    {% elif quiz['attempts'] > 0 %}
+                    <i class="fas fa-times-circle text-danger"></i>
+                    {% else %}
+                    <i class="far fa-circle"></i>
+                    {% endif %}
+                    {{quiz['quiz_num']}}. {{ quiz['title'] }}
+                </a>
+                {% endfor %}
+                <a href="{{ url_for('quiz_results') }}" 
+                   class="list-group-item list-group-item-action {% if score == None %}disabled{% endif %}">
+                    Quiz Results
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <h1>{{ mainQuestion['title'] }}</h1>
+            <p>{{ mainQuestion['question'] }}</p>
+            
+            {% if mainQuestion['code'] %}
+            <pre><code class="language-python">{{ mainQuestion['code'] }}</code></pre>
+            {% endif %}
+            
+            <form id="quiz-form-{{ mainQuestion['quiz_num'] }}" method="POST">
+                {% for choice in range(1, 5) %}
+                <div class="form-check mb-2">
+                    <input type="radio" class="form-check-input" name="answer" id="option-{{ choice }}" 
+                           value="{{ choice }}" 
+                           {% if mainQuestion['option_chosen']==choice %}checked{% endif %}
+                           {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
+                    <label class="form-check-label" for="option-{{ choice }}">
+                        {{ mainQuestion['options'][choice - 1] }}
+                    </label>
+                </div>
+                {% endfor %}
+            </form>
 
-<!-- TO-DO -->
-<h1>TO-DO: Quiz</h1>
+            <button id="submit-btn" class="btn btn-primary mt-3" 
+                    onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
+                    {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
+                Submit Answer
+            </button>
+            
+            <p class="mt-2">Attempts left: {{ 2 - mainQuestion['attempts'] }}</p>
+            
+            <div id="quiz-feedback">
+                {% if mainQuestion['attempts'] > 0 %}
+                <p class="{% if mainQuestion['option_chosen'] == mainQuestion['answer'] %}text-success{% else %}text-danger{% endif %}">
+                    {{ mainQuestion['feedback'].get(mainQuestion['option_chosen'], '') }}
+                </p>
+                {% endif %}
+            </div>
 
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] - 1) }}" 
+                   class="btn btn-secondary {% if mainQuestion['quiz_num'] - 1 < 1 %}disabled{% endif %}">
+                    Previous
+                </a>
+                
+                {% if mainQuestion['quiz_num'] == length %}
+                <a href="{{ url_for('quiz_results') }}" 
+                   class="btn btn-primary {% if score == None %}disabled{% endif %}">
+                    View Results
+                </a>
+                {% else %}
+                <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] + 1) }}" 
+                   class="btn btn-primary {% if mainQuestion['quiz_num'] == length %}disabled{% endif %}">
+                    Next
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
