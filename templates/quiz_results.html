@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>Quiz Results</h1>
+    {% if score is not none %}
+        <h2 class="mt-3">You scored {{ score }} out of {{ length }}!</h2>
+        <p class="mt-3">
+            Great job completing the quiz!
+        </p>
+        <a href="{{ url_for('retryQuiz') }}" class="btn btn-primary mt-4">Retry Quiz</a>
+    {% endif %}
+</div>
+{% endblock %}

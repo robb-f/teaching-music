@@ -31,7 +31,7 @@ lesson = {
         'genre': 'Medieval',
         'composer': 'Gregorian Chant',
         'piece': 'Deum vera',
-        'link': 'https://www.youtube.com/watch?v=kK5AohCMX0U'
+        'link': 'https://www.youtube.com/watch?v=kK5AohCMX0U',
         'timestamp_no': 1,
         'timestamps': {
             0: 'Medieval music didn\'t always use instruments; notice there are only singers. But the texture is still <strong>homophonic</strong>.'
@@ -74,7 +74,7 @@ lesson = {
         'genre': 'Baroque',
         'composer': 'G.F. Handel',
         'piece': 'Julius Caesar, Act II',
-        'link': 'https://www.youtube.com/watch?v=ppAUohisvG8'
+        'link': 'https://www.youtube.com/watch?v=ppAUohisvG8',
         'timestamp_no': 2,
         'timestamps': {
             30: 'Notice how the violins and soprano sing melody, while the cello, bass, and harpsichord provide rhythmic and harmonic foundation.',
@@ -231,6 +231,10 @@ def retryQuiz():
     resetQuiz()
     return quiz(1)
 
+@app.route('/quiz')
+def quiz_redirect():
+    return redirect(url_for('quiz', quiz_num=1))
+    
 def resetQuiz():
     global quiz_started, quiz_answers
     quiz_started = False

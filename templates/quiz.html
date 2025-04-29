@@ -48,13 +48,16 @@
                 {% endfor %}
             </form>
 
-            <button id="submit-btn" class="btn btn-primary mt-3" 
-                    onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
-                    {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
-                Submit Answer
+            <button id="submit-btn" class="btn btn-success btn-lg mt-3" onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
+                {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
+                <i class="fas fa-paper-plane"></i> Submit Answer
             </button>
+    
             
-            <p class="mt-2">Attempts left: {{ 2 - mainQuestion['attempts'] }}</p>
+            <div class="alert alert-info mt-3" role="alert">
+                Attempts left: {{ 2 - mainQuestion['attempts'] }}
+              </div>
+              
             
             <div id="quiz-feedback">
                 {% if mainQuestion['attempts'] > 0 %}
@@ -85,4 +88,56 @@
         </div>
     </div>
 </div>
+
+<script>
+    function handleAnswer(quiz_num) {
+        const selectedOption = document.querySelector('input[name="answer"]:checked');
+        
+        if (!selectedOption) {
+            alert('Please select an answer before submitting.');
+            return;
+        }
+    
+        const answer = selectedOption.value;
+    
+        fetch(`/quiz_answer/${quiz_num}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ answer: answer }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.feedback) {
+                document.getElementById('quiz-feedback').innerHTML = `
+                    <div class="alert ${data.correct ? 'alert-success' : 'alert-danger'}" role="alert">
+                        ${data.feedback}
+                    </div>
+                `;
+            }
+
+            // disable submit
+            if (data.disable_submit) {
+                document.getElementById('submit-btn').disabled = true;
+    
+                document.querySelectorAll('input[name="answer"]').forEach(input => {
+                    input.disabled = true;
+                });
+            }
+    
+            const attempts = 2 - data.attempts;
+            const attemptsAlert = document.querySelector('.alert-info');
+            if (attemptsAlert) {
+                attemptsAlert.innerHTML = `Attempts left: ${attempts}`;
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting answer:', error);
+            alert('There was an error submitting your answer. Please try again.');
+        });
+    }
+    </script>
+
+
 {% endblock %}
