@@ -4,8 +4,13 @@
 # Vaibhav Sourirajan - vs2787
 
 from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
+import data as app_data
 
 app = Flask(__name__)
+
+
+quiz_started = False
+data = app_data.app_data
 
 # GLOBAL VARIABLES
 
@@ -103,9 +108,73 @@ def learn_lesson(lesson_number):
     return render_template('learn.html', lesson_number=lesson_number)
 
 # Quiz
-@app.route('/quiz')
-def quiz():
-    return render_template('quiz.html')
+# @app.route('/quiz')
+# def quiz():
+#     return render_template('quiz.html')
+
+@app.route('/quiz/<int:quiz_num>/')
+def quiz(quiz_num):
+    global quiz_started
+    
+    if quiz_started:
+        question = data["quizzes"][quiz_num - 1]
+    else:
+        question = data["quizzes"][0]   
+         
+    quiz_started = True
+       
+    score = score_quiz()
+    return render_template('quiz.html', mainQuestion=question, data=data, length=len(data["quizzes"]), score=score)
+
+@app.route('/results')
+def quiz_results():
+    score = score_quiz()
+    if not score:
+        return quiz(1)
+    return render_template('quiz_results.html', score=score, data=data, length=len(data["quizzes"]))
+    
+def score_quiz():
+    score = 0
+    for question in data["quizzes"]:
+        if question["attempts"] == 0:
+            return None
+        if question["option_chosen"] == question["answer"]:
+            score += 1
+    return score
+
+@app.route('/quiz_answer/<int:quiz_num>', methods=['POST'])
+def quiz_answer(quiz_num):
+    question = data["quizzes"][quiz_num - 1]
+    answer = int(request.json.get("answer"))
+    
+    if question["attempts"] < 2 and question["option_chosen"] != question["answer"]:
+        question["attempts"] += 1
+        question["option_chosen"] = answer
+        correct = (answer == question["answer"])
+        feedback = question["feedback"].get(answer, "Incorrect answer")
+
+        if correct or question["attempts"] == 2:
+            disable_submit = True
+        else:
+            disable_submit = False
+    else:
+        correct = (question["option_chosen"] == question["answer"])
+        feedback = question["feedback"].get(question["option_chosen"], "Answer already selected")
+        disable_submit = True
+
+    return jsonify({"correct": correct, "feedback": feedback, "attempts": question["attempts"], "disable_submit": disable_submit})
+
+@app.route('/retry_quiz')
+def retryQuiz():
+    resetQuiz()
+    return quiz(1)
+
+def resetQuiz():
+    global quiz_started, quiz_answers
+    quiz_started = False
+    for question in data['quizzes']:
+        question['option_chosen'] = None
+        question['attempts'] = 0
 
 # AJAX FUNCTIONS
 
