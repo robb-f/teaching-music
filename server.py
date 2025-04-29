@@ -82,7 +82,7 @@ lesson = {
         'composer': 'Krzysztof Penderecki',
         'piece': 'Threnody to the Victims of Hiroshima',
         'link': 'https://www.youtube.com/watch?v=HilGthRhwP8'
-    },
+    }
 }
 
 # ROUTES
