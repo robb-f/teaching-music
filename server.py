@@ -102,10 +102,9 @@ def home():
 def learn():
     return redirect(url_for('learn_lesson', lesson_number=1))
 
-# Learn (dynamic - with lesson number)
 @app.route('/learn/<int:lesson_number>')
 def learn_lesson(lesson_number):
-    return render_template('learn.html', lesson_number=lesson_number)
+    return render_template('learn.html', lesson_number=lesson_number, lesson=lesson)
 
 # Quiz
 # @app.route('/quiz')

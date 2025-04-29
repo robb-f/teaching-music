@@ -1,13 +1,24 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<!--
 <h1>MEDIEVAL ERA - Lesson {{ lesson_number }}</h1>
 <h2>Hildegard von Bingen – Columba Aspexit</h2>
+-->
+<h1>{{ lesson[lesson_number]['genre'] }} ERA - Lesson {{ lesson_number }}</h1>
+<h2>{{ lesson[lesson_number]['composer'] }} – {{ lesson[lesson_number]['piece'] }}</h2>
 
-<!-- Embedded YouTube Video -->
+<!-- Embedded YouTube Video
 <div style="text-align: center;">
     <iframe id="video" width="560" height="315" 
         src="https://www.youtube.com/embed/BpmMeIQywYc?enablejsapi=1" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+</div>
+-->
+<div style="text-align: center;">
+    <iframe id="video" width="560" height="315" 
+        src="{{ lesson[lesson_number]['link'] | replace('watch?v=', 'embed/') }}?enablejsapi=1" 
         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
     </iframe>
 </div>
@@ -68,13 +79,30 @@
     }
 </script>
 
-<!-- Next Piece Button -->
+<!-- Next Piece Button
 <div style="text-align: center; margin-top: 30px;">
     <a href="/learn/{{ lesson_number + 1 }}" style="text-decoration: none;">
         <div style="display: inline-block; background-color: #0056a6; color: white; padding: 15px 30px; border-radius: 15px; font-size: 18px;">
             NEXT PIECE →
         </div>
     </a>
+</div>
+-->
+<!-- Next Piece or Take Quiz Button -->
+<div style="text-align: center; margin-top: 30px;">
+    {% if lesson_number < 12 %}
+        <a href="{{ url_for('learn_lesson', lesson_number=lesson_number + 1) }}" style="text-decoration: none;">
+            <div style="display: inline-block; background-color: #0056a6; color: white; padding: 15px 30px; border-radius: 15px; font-size: 18px;">
+                NEXT PIECE →
+            </div>
+        </a>
+    {% else %}
+        <a href="{{ url_for('quiz', quiz_num=1) }}" style="text-decoration: none;">
+            <div style="display: inline-block; background-color: #28a745; color: white; padding: 15px 30px; border-radius: 15px; font-size: 18px;">
+                TAKE THE QUIZ! →
+            </div>
+        </a>
+    {% endif %}
 </div>
 
 {% endblock %}
