@@ -224,7 +224,7 @@ def quiz_answer(quiz_num):
         feedback = question["feedback"].get(question["option_chosen"], "Answer already selected")
         disable_submit = True
 
-    return jsonify({"correct": correct, "feedback": feedback, "attempts": question["attempts"], "disable_submit": disable_submit})
+    return jsonify({"correct": correct, "feedback": feedback, "attempts": question["attempts"], "disable_submit": disable_submit, "quiz_complete": (score_quiz() is not None)})
 
 @app.route('/retry_quiz')
 def retryQuiz():
@@ -241,6 +241,17 @@ def resetQuiz():
     for question in data['quizzes']:
         question['option_chosen'] = None
         question['attempts'] = 0
+
+@app.route('/review_answers')
+def review_answers():
+    if score_quiz() is None:
+        return redirect(url_for('quiz', quiz_num=1))
+    return render_template(
+        'review_answers.html',
+        data=data,
+        length=len(data["quizzes"])
+    )
+
 
 # AJAX FUNCTIONS
 

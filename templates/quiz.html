@@ -74,8 +74,9 @@
                 </a>
                 
                 {% if mainQuestion['quiz_num'] == length %}
-                <a href="{{ url_for('quiz_results') }}" 
-                   class="btn btn-primary {% if score == None %}disabled{% endif %}">
+                <a id="view-results-btn"
+                    href="{{ url_for('quiz_results') }}"
+                    class="btn btn-primary {% if score is none %}disabled{% endif %}">
                     View Results
                 </a>
                 {% else %}
@@ -131,6 +132,10 @@
             if (attemptsAlert) {
                 attemptsAlert.innerHTML = `Attempts left: ${attempts}`;
             }
+            if (data.quiz_complete) {
+            const resultsLink = document.getElementById('view-results-btn');
+            if (resultsLink) resultsLink.classList.remove('disabled');
+        }
         })
         .catch(error => {
             console.error('Error submitting answer:', error);

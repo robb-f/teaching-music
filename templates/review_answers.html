@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h1>Review Your Answers</h1>
+  <p class="mb-4">
+    Below each question shows your choice and the correct answer.
+  </p>
+
+  {% for q in data.quizzes %}
+    <div class="mb-5">
+      <h4>{{ q.quiz_num }}. {{ q.title }}</h4>
+      <p>{{ q.question }}</p>
+      {% if q.code %}
+        <pre><code class="language-python">{{ q.code }}</code></pre>
+      {% endif %}
+      <ul class="list-group">
+        {% for opt in q.options %}
+          {% set idx = loop.index %}
+          <li class="list-group-item
+                     {% if idx == q.answer %}list-group-item-success{% endif %}
+                     {% if idx == q.option_chosen and idx != q.answer %}list-group-item-danger{% endif %}
+                     {% if idx == q.option_chosen and idx == q.answer %}list-group-item-info{% endif %}">
+            {% if idx == q.option_chosen and idx != q.answer %}
+              <strong>Your answer:</strong>
+            {% elif idx == q.option_chosen and idx == q.answer %}
+              <strong>Your (correct) answer:</strong>
+            {% elif idx == q.answer %}
+              <strong>Correct answer:</strong>
+            {% endif %}
+            {{ opt }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+
+  <a href="{{ url_for('quiz_results') }}" class="btn btn-secondary">
+    Back to Results
+  </a>
+</div>
+{% endblock %}
