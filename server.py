@@ -14,6 +14,7 @@ data = app_data.app_data
 
 # GLOBAL VARIABLES
 
+# TO-DO: Fix timestamps now that we are natively hosting the videos
 cur_lesson = 1
 lesson = {
     1: {
