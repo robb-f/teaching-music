@@ -5,7 +5,7 @@
 <h1>MEDIEVAL ERA - Lesson {{ lesson_number }}</h1>
 <h2>Hildegard von Bingen – Columba Aspexit</h2>
 -->
-<h1>{{ lesson[lesson_number]['genre'] }} ERA - Lesson {{ lesson_number }}</h1>
+<h1>{{ lesson[lesson_number]['genre'] }} Era - Lesson {{ lesson_number }}</h1>
 <h2>{{ lesson[lesson_number]['composer'] }} – {{ lesson[lesson_number]['piece'] }}</h2>
 
 <!-- Embedded YouTube Video
@@ -16,19 +16,29 @@
     </iframe>
 </div>
 -->
+<!--
 <div style="text-align: center;">
     <iframe id="video" width="560" height="315" 
-        src="{{ lesson[lesson_number]['link'] | replace('watch?v=', 'embed/') }}?enablejsapi=1" 
+        src="{{ lesson[lesson_number]['link'] | replace('watch?v=', 'embed/') }}" 
         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
     </iframe>
 </div>
-
-<!-- Text that will appear at the right time -->
-<div id="timestamp-text" style="margin-top: 20px; font-size: 18px; text-align: center;">
-    <!-- Text will be inserted here -->
+-->
+<div style="text-align: center;">
+    <video id="video" width="640" height="360" controls>
+        <source src="{{ url_for('static', filename='videos/' + lesson[lesson_number]['link']) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </div>
 
-<!-- Script to control showing text at certain times -->
+<div id="timestamp-text"></div>
+
+<!-- Text that will appear at the right time
+<div id="timestamp-text" style="margin-top: 20px; font-size: 18px; text-align: center;">
+</div>
+-->
+
+<!-- Script to control showing text at certain times
 <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -78,6 +88,40 @@
         }
     }
 </script>
+-->
+
+<script>
+    const video = document.getElementById('video');
+    const textBox = document.getElementById('timestamp-text');
+
+    const shownTexts = {
+        22: false,
+        32: false
+    };
+
+    video.addEventListener('timeupdate', function () {
+        const current = video.currentTime;
+
+        if (current >= 22 && !shownTexts[22]) {
+            textBox.innerHTML = 
+                "<strong>0:22:</strong> One singer sings the main melody, instruments play 1 singular chord as background.";
+            shownTexts[22] = true;
+        }
+
+        if (current >= 32 && !shownTexts[32]) {
+            textBox.innerHTML = 
+                "<strong>0:32:</strong> Other singers join in, but they sing the <em>exact same</em> melody — this is called <strong><u>homophony</u></strong>, which was used prominently in Medieval music.";
+            shownTexts[32] = true;
+        }
+    });
+
+    video.addEventListener('seeked', function () {
+        // Optional: Reset logic when seeking backward
+        const current = video.currentTime;
+        if (current < 32) shownTexts[32] = false;
+        if (current < 22) shownTexts[22] = false;
+    });
+  </script>
 
 <!-- Next Piece or Take Quiz Button -->
 <div style="text-align: center; margin-top: 30px;">

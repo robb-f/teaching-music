@@ -21,7 +21,7 @@ lesson = {
         'genre': 'Medieval',
         'composer': 'Hildegard von Bingen',
         'piece': 'Columba Aspexit',
-        'link': 'https://www.youtube.com/watch?v=BpmMeIQywYc',
+        'link': 'medieval1.mp4',
         'timestamp_no': 2,
         'timestamps': {
             26: 'The instruments only establish a consistent harmony. They never change their note, and the singer is the clear melody.',
@@ -32,7 +32,7 @@ lesson = {
         'genre': 'Medieval',
         'composer': 'Gregorian Chant',
         'piece': 'Deum vera',
-        'link': 'https://www.youtube.com/watch?v=kK5AohCMX0U',
+        'link': 'medieval2.mp4',
         'timestamp_no': 1,
         'timestamps': {
             0: 'Medieval music didn\'t always use instruments; notice there are only singers. But the texture is still <strong>homophonic</strong>.'
@@ -42,7 +42,7 @@ lesson = {
         'genre': 'Renaissance',
         'composer': 'Josquin des Prez',
         'piece': 'Ave Maria',
-        'link': 'https://www.youtube.com/watch?v=xGkb5KFwx1I',
+        'link': 'renaissance1.mp4',
         'timestamp_no': 2,
         'timestamps': {
             0: 'Notice the entrances - soprano, alto, tenor, finally bass. Their <em>staggered entrances</em> create a multi-line melodic figure.',
@@ -53,7 +53,7 @@ lesson = {
         'genre': 'Renaissance',
         'composer': 'Carlo Gesualdo',
         'piece': 'Moro Lasso',
-        'link': 'https://www.youtube.com/watch?v=xGkb5KFwx1I',
+        'link': 'renaissance2.mp4',
         'timestamp_no': 2,
         'timestamps': {
             30: 'The voices move together, BUT they sing <em>different pitches</em>, creating more complex harmony.',
@@ -64,7 +64,7 @@ lesson = {
         'genre': 'Baroque',
         'composer': 'J.S. Bach',
         'piece': 'Harpsichord Concerto No. 1',
-        'link': 'https://www.youtube.com/watch?v=XcsfDxojdV8',
+        'link': 'baroque1.mp4',
         'timestamp_no': 2,
         'timestamps': {
             3: 'Instrumentations becomes more important; namely the <strong>harpsichord</strong> becomes the most famous instrument of this era.',
@@ -75,7 +75,7 @@ lesson = {
         'genre': 'Baroque',
         'composer': 'G.F. Handel',
         'piece': 'Julius Caesar, Act II',
-        'link': 'https://www.youtube.com/watch?v=ppAUohisvG8',
+        'link': 'baroque2.mp4',
         'timestamp_no': 2,
         'timestamps': {
             30: 'Notice how the violins and soprano sing melody, while the cello, bass, and harpsichord provide rhythmic and harmonic foundation.',
@@ -86,7 +86,7 @@ lesson = {
         'genre': 'Classical',
         'composer': 'W.A. Mozart',
         'piece': 'Impresario Overture',
-        'link': 'https://www.youtube.com/watch?v=7vaBubCmhWA',
+        'link': 'classical1.mp4',
         'timestamp_no': 3,
         'timestamps': {
             6: 'Notice how loud and heroic we start.',
@@ -98,7 +98,7 @@ lesson = {
         'genre': 'Classical',
         'composer': 'Chevalier de Saint-Georges',
         'piece': 'Violin Concerto in A Major',
-        'link': 'https://www.youtube.com/watch?v=eQ1unCtX6K0',
+        'link': 'classical2.mp4',
         'timestamp_no': 2,
         'timestamps': {
             170: 'There are small sprinkles of virtuosity, like the occasional fast notes of the violin.',
@@ -109,7 +109,7 @@ lesson = {
         'genre': 'Romantic',
         'composer': 'Anton von Bruckner',
         'piece': 'Symphony No. 7',
-        'link': 'https://www.youtube.com/watch?v=dSGOaTuAesY&t=528s',
+        'link': 'romantic1.mp4',
         'timestamp_no': 2,
         'timestamps': {
             773: 'The orchestration is now (basically) the same as the modern orchestra -- strings, winds, brass, and percussion instruments.',
@@ -121,7 +121,7 @@ lesson = {
         'genre': 'Romantic',
         'composer': 'Ludwig van Beethoven',
         'piece': 'Symphony No. 5',
-        'link': 'https://www.youtube.com/watch?v=yKl4T5BnhOA',
+        'link': 'romantic2.mp4',
         'timestamp_no': 4,
         'timestamps': {
             0: 'A classic piece -- we start very loud and strong here.',
@@ -134,7 +134,7 @@ lesson = {
         'genre': 'Modern/Contemporary',
         'composer': 'Igor Stravinsky',
         'piece': 'The Rite of Spring',
-        'link': 'https://www.youtube.com/watch?v=EkwqPJZe8ms',
+        'link': 'modern1.mp4',
         'timestamp_no': 2,
         'timestamps': {
             1429: 'There is no clear harmony anymore (it doesn\'t sound pretty anymore), because <strong>traditional rules get thrown out</strong>.',
@@ -145,7 +145,7 @@ lesson = {
         'genre': 'Modern/Contemporary',
         'composer': 'Krzysztof Penderecki',
         'piece': 'Threnody to the Victims of Hiroshima',
-        'link': 'https://www.youtube.com/watch?v=HilGthRhwP8',
+        'link': 'modern2.mp4',
         'timestamp_no': 2,
         'timestamps': {
             115: 'Instrumentation can also vary wildly. The last piece had a regular orchestra, this piece only calls for strings.',
