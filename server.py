@@ -14,7 +14,6 @@ data = app_data.app_data
 
 # GLOBAL VARIABLES
 
-# TO-DO: Fix timestamps now that we are natively hosting the videos
 cur_lesson = 1
 lesson = {
     1: {
@@ -24,8 +23,8 @@ lesson = {
         'link': 'medieval1.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            26: 'The instruments only establish a consistent harmony. They never change their note, and the singer is the clear melody.',
-            32: 'Other singers join in, but they sing the <em>exact same</em> melody — this is called <strong><u>homophony</u></strong>, which was used prominently in Medieval music.'
+            0: 'The instruments only establish a consistent harmony. They never change their note, and the singer is the clear melody.',
+            7: 'Other singers join in, but they sing the <em>exact same</em> melody — this is called <strong><u>homophony</u></strong>, which was used prominently in Medieval music.'
         }
     },
     2: {
@@ -56,8 +55,8 @@ lesson = {
         'link': 'renaissance2.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            30: 'The voices move together, BUT they sing <em>different pitches</em>, creating more complex harmony.',
-            40: 'Lyrics can have religious connotations (e.g., Dieu, Deus, etc.).'
+            0: 'The voices move together, BUT they sing <em>different pitches</em>, creating more complex harmony.',
+            10: 'Lyrics can have religious connotations (e.g., Dieu, Deus, etc.).'
         }
     },
     5: {
@@ -67,8 +66,8 @@ lesson = {
         'link': 'baroque1.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            3: 'Instrumentations becomes more important; namely the <strong>harpsichord</strong> becomes the most famous instrument of this era.',
-            15: 'The <strong>concerto</strong> starts becoming more popular, where a soloist is accompanied by an orchestra.'
+            0: 'Instrumentations becomes more important; namely the <strong>harpsichord</strong> becomes the most famous instrument of this era.',
+            12: 'The <strong>concerto</strong> starts becoming more popular, where a soloist is accompanied by an orchestra.'
         }
     },
     6: {
@@ -78,8 +77,8 @@ lesson = {
         'link': 'baroque2.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            30: 'Notice how the violins and soprano sing melody, while the cello, bass, and harpsichord provide rhythmic and harmonic foundation.',
-            48: 'They are known as the <strong>continuo</strong>, which is very representative of the Baroque era.'
+            0: 'Notice how the violins and soprano sing melody, while the cello, bass, and harpsichord provide rhythmic and harmonic foundation.',
+            18: 'They are known as the <strong>continuo</strong>, which is very representative of the Baroque era.'
         }
     },
     7: {
@@ -89,9 +88,9 @@ lesson = {
         'link': 'classical1.mp4',
         'timestamp_no': 3,
         'timestamps': {
-            6: 'Notice how loud and heroic we start.',
-            10: "Now it's suddenly quieter and tip toe-y.",
-            14: "We're <em>suddenly</em> loud again! This sudden change in volume is popular in this genre."
+            0: 'Notice how loud and heroic we start.',
+            4: "Now it's suddenly quieter and tip toe-y.",
+            8: "We're <em>suddenly</em> loud again! This sudden change in volume is popular in this genre."
         }
     },
     8: {
@@ -101,8 +100,8 @@ lesson = {
         'link': 'classical2.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            170: 'There are small sprinkles of virtuosity, like the occasional fast notes of the violin.',
-            180: 'Performs finish their notes <strong>elegantly</strong>, which is very characteristic of the Classical era as well.'
+            0: 'There are small sprinkles of virtuosity, like the occasional fast notes of the violin.',
+            10: 'Performs finish their notes <strong>elegantly</strong>, which is very characteristic of the Classical era as well.'
         }
     },
     9: {
@@ -112,9 +111,9 @@ lesson = {
         'link': 'romantic1.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            773: 'The orchestration is now (basically) the same as the modern orchestra -- strings, winds, brass, and percussion instruments.',
-            784: 'The texture is very <strong>thick</strong> here, which is also supremely characteristic of Romantic music.',
-            800: 'Mind you, only violas, cellos, bass, and 2 horns play here.'
+            0: 'The orchestration is now (basically) the same as the modern orchestra -- strings, winds, brass, and percussion instruments.',
+            11: 'The texture is very <strong>thick</strong> here, which is also supremely characteristic of Romantic music.',
+            27: 'Mind you, only violas, cellos, bass, and 2 horns play here.'
         }
     },
     10: {
@@ -137,8 +136,8 @@ lesson = {
         'link': 'modern1.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            1429: 'There is no clear harmony anymore (it doesn\'t sound pretty anymore), because <strong>traditional rules get thrown out</strong>.',
-            1438: 'There is a <strong>wide range</strong> of volumes here. We started pretty soft, and now TWO timpanis and the whole orchestra play 11 notes together.'
+            0: 'There is no clear harmony anymore (it doesn\'t sound pretty anymore), because <strong>traditional rules get thrown out</strong>.',
+            10: 'There is a <strong>wide range</strong> of volumes here. We started pretty soft, and now TWO timpanis and the whole orchestra play 11 notes together.'
         }
     },
     12: {
@@ -148,8 +147,8 @@ lesson = {
         'link': 'modern2.mp4',
         'timestamp_no': 2,
         'timestamps': {
-            115: 'Instrumentation can also vary wildly. The last piece had a regular orchestra, this piece only calls for strings.',
-            125: 'Normally, this music is intended to <strong>evoke a specific emotion</strong> or <strong>write about a specific event</strong> (such as the bombing of Hiroshima here).'
+            0: 'Instrumentation can also vary wildly. The last piece had a regular orchestra, this piece only calls for strings.',
+            10: 'Normally, this music is intended to <strong>evoke a specific emotion</strong> or <strong>write about a specific event</strong> (such as the bombing of Hiroshima here).'
         }
     }
 }
@@ -168,13 +167,10 @@ def learn():
 
 @app.route('/learn/<int:lesson_number>')
 def learn_lesson(lesson_number):
-    return render_template('learn.html', lesson_number=lesson_number, lesson=lesson)
+    lesson_data = lesson[lesson_number]
+    return render_template('learn.html', lesson_number=lesson_number, lesson=lesson_data)
 
 # Quiz
-# @app.route('/quiz')
-# def quiz():
-#     return render_template('quiz.html')
-
 @app.route('/quiz/<int:quiz_num>/')
 def quiz(quiz_num):
     global quiz_started
@@ -189,6 +185,7 @@ def quiz(quiz_num):
     score = score_quiz()
     return render_template('quiz.html', mainQuestion=question, data=data, length=len(data["quizzes"]), score=score)
 
+# Results page
 @app.route('/results')
 def quiz_results():
     score = score_quiz()
@@ -252,9 +249,6 @@ def review_answers():
         data=data,
         length=len(data["quizzes"])
     )
-
-
-# AJAX FUNCTIONS
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
