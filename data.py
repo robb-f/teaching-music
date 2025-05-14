@@ -12,15 +12,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 4,
+            "answer": 5,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music would have a different style and instrumentation.",
                 2: "Incorrect: Renaissance music would have different characteristics.",
                 3: "Incorrect: Baroque music would show more ornamentation and complexity.",
-                4: "Correct! This piece demonstrates the Classical period's characteristic clarity, balance, and structured form.",
-                5: "Incorrect: While Romantic music can be emotional, this piece shows more Classical period traits.",
+                4: "Incorrect: Classical music would be more restrained in its expression.",
+                5: "Correct! This piece demonstrates the Romantic period's characteristic clarity, balance, and structured form.",
                 6: "Incorrect: Modern/Contemporary music would show more experimental techniques.",
             },
             "audio": "audio/question1.mp3"
@@ -37,7 +37,7 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 5,
+            "answer": 3,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
@@ -45,7 +45,7 @@ app_data = {
                 2: "Incorrect: Renaissance music would have a different style of expression.",
                 3: "Incorrect: Baroque music, while expressive, would show different characteristics.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Correct! This piece shows the Romantic period's characteristic emotional depth and dramatic contrasts.",
+                5: "Incorrect: Romantic music would have a different style of expression.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques for expression.",
             },
             "audio": "audio/question2.mp3"
@@ -62,16 +62,16 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 2,
+            "answer": 6,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music was primarily monophonic.",
-                2: "Correct! This piece demonstrates the Renaissance period's characteristic polyphonic texture.",
+                2: "Incorrect: Renaissance music would use different instrumental combinations.",
                 3: "Incorrect: While Baroque music used polyphony, this shows Renaissance characteristics.",
                 4: "Incorrect: Classical period would feature more homophonic texture.",
                 5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
-                6: "Incorrect: Modern/Contemporary vocal music would sound quite different.",
+                6: "Correct! This piece demonstrates the Modern/Contemporary period's characteristic polyphonic texture.",
             },
             "audio": "audio/question3.mp3"
         },
@@ -87,16 +87,16 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 6,
+            "answer": 4,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music used only acoustic instruments.",
                 2: "Incorrect: Renaissance music predates electronic technology.",
                 3: "Incorrect: Baroque music stayed within acoustic boundaries.",
-                4: "Incorrect: Classical music would use traditional acoustic instruments.",
+                4: "Correct! This piece shows the Classical period's use of traditional acoustic instruments.",
                 5: "Incorrect: Romantic music stayed within acoustic boundaries.",
-                6: "Correct! This piece shows Modern/Contemporary period's use of electronic and experimental sounds.",
+                6: "Incorrect: Modern/Contemporary music would show more experimental techniques.",
             },
             "audio": "audio/question4.mp3"
         },
@@ -112,16 +112,16 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 4,
+            "answer": 6,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music would use different instruments.",
                 2: "Incorrect: Renaissance music would use different instrumental combinations.",
                 3: "Incorrect: Baroque orchestral music would show different characteristics.",
-                4: "Correct! This piece shows the Classical period's characteristic orchestral writing.",
+                4: "Incorrect: Classical orchestral music would show different characteristics.",
                 5: "Incorrect: Romantic orchestral music would be more dramatic and expansive.",
-                6: "Incorrect: Modern/Contemporary orchestral music would likely be more experimental.",
+                6: "Correct! This piece shows the Modern/Contemporary period's characteristic orchestral writing.",
             },
             "audio": "audio/question5.mp3"
         },
@@ -137,15 +137,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 5,
+            "answer": 2,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music was primarily religious or secular vocal music.",
-                2: "Incorrect: Renaissance music was primarily religious or secular vocal music.",
+                2: "Correct! This piece demonstrates the Renaissance period's characteristic program music.",
                 3: "Incorrect: While Baroque music could be programmatic, it was less common.",
                 4: "Incorrect: Classical music focused more on absolute music.",
-                5: "Correct! This piece demonstrates the Romantic period's characteristic program music.",
+                5: "Incorrect: Romantic period would have a different style of program music.",
                 6: "Incorrect: Modern/Contemporary program music would use different techniques.",
             },
             "audio": "audio/question6.mp3"
@@ -162,16 +162,16 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 6,
+            "answer": 1,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Incorrect: Medieval music used only traditional acoustic instruments.",
+                1: "Correct! This piece shows the Medieval period's use of traditional acoustic instruments.",
                 2: "Incorrect: Renaissance music predates electronic technology.",
                 3: "Incorrect: Baroque music stayed within acoustic boundaries.",
                 4: "Incorrect: Classical music used traditional acoustic instruments.",
                 5: "Incorrect: Romantic music stayed within acoustic boundaries.",
-                6: "Correct! This piece shows Modern/Contemporary period's innovative use of technology.",
+                6: "Incorrect: Modern/Contemporary period's innovative use of technology.",
             },
             "audio": "audio/question7.mp3"
         },
@@ -187,15 +187,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 4,
+            "answer": 5,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music predates sonata form.",
                 2: "Incorrect: Renaissance music predates sonata form.",
                 3: "Incorrect: While Baroque music had important forms, sonata form developed later.",
-                4: "Correct! This piece demonstrates the Classical period's development of sonata form.",
-                5: "Incorrect: While Romantic composers used sonata form, it was developed in the Classical period.",
+                4: "Incorrect: Classical period would feature more homophonic texture.",
+                5: "Correct! This piece demonstrates the Romantic period's development of sonata form.",
                 6: "Incorrect: Modern/Contemporary music often breaks away from traditional forms.",
             },
             "audio": "audio/question8.mp3"
@@ -212,14 +212,14 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 2,
+            "answer": 4,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music was primarily monophonic.",
-                2: "Correct! This piece demonstrates the Renaissance period's characteristic polyphonic style.",
+                2: "Incorrect: Renaissance music would use different instrumental combinations.",
                 3: "Incorrect: While Baroque music used counterpoint, this shows Renaissance characteristics.",
-                4: "Incorrect: Classical music would be more homophonic.",
+                4: "Correct! This piece demonstrates the Classical period's characteristic polyphonic style.",
                 5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
                 6: "Incorrect: Modern/Contemporary vocal music would sound quite different.",
             },
@@ -237,7 +237,7 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 5,
+            "answer": 3,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
@@ -245,7 +245,7 @@ app_data = {
                 2: "Incorrect: Renaissance music would have a different style of expression.",
                 3: "Incorrect: While Baroque music was expressive, it had different characteristics.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Correct! This piece shows the Romantic period's characteristic emotional depth.",
+                5: "Incorrect: Romantic music would have a different style of expression.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques to express emotion.",
             },
             "audio": "audio/question10.mp3"
