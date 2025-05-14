@@ -2,150 +2,253 @@ app_data = {
     "quizzes": [
         {
             "quiz_num": 1,
-            "title": "Understanding Musical Periods",
-            "question": "Which musical period is known for its emphasis on emotional expression and dramatic contrasts?",
+            "title": "Question 1",
+            "question": "Listen to this excerpt and identify the musical period. This piece features clear, balanced phrases and a structured form typical of which period?",
             "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
                 "Classical",
                 "Romantic",
-                "Renaissance",
-                "Modern"
+                "Modern/Contemporary"
             ],
-            "answer": 2,
+            "answer": 4,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Incorrect: The Classical period focused more on balance and clarity.",
-                2: "Correct! The Romantic period emphasized emotional expression and dramatic contrasts.",
-                3: "Incorrect: The Renaissance period was more focused on polyphony and religious music.",
-                4: "Incorrect: Modern music is characterized by experimentation and breaking traditional rules.",
+                1: "Incorrect: Medieval music would have a different style and instrumentation.",
+                2: "Incorrect: Renaissance music would have different characteristics.",
+                3: "Incorrect: Baroque music would show more ornamentation and complexity.",
+                4: "Correct! This piece demonstrates the Classical period's characteristic clarity, balance, and structured form.",
+                5: "Incorrect: While Romantic music can be emotional, this piece shows more Classical period traits.",
+                6: "Incorrect: Modern/Contemporary music would show more experimental techniques.",
             },
-            "code": None
+            "audio": "audio/question1.mp3"
         },
         {
             "quiz_num": 2,
-            "title": "Musical Forms and Structures",
-            "question": "Which period is known for the development of the sonata form and symphony?",
+            "title": "Question 2",
+            "question": "This excerpt features dramatic dynamics and emotional expression. Which period does it represent?",
             "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
                 "Classical",
                 "Romantic",
-                "Renaissance",
-                "Modern"
+                "Modern/Contemporary"
             ],
-            "answer": 1,
+            "answer": 5,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Correct! The Classical period saw the development of these important musical forms.",
-                2: "Incorrect: While Romantic composers used these forms, they were developed in the Classical period.",
-                3: "Incorrect: The Renaissance period predates these forms.",
-                4: "Incorrect: Modern music often breaks away from traditional forms.",
+                1: "Incorrect: Medieval music would be more monophonic and less expressive.",
+                2: "Incorrect: Renaissance music would have a different style of expression.",
+                3: "Incorrect: Baroque music, while expressive, would show different characteristics.",
+                4: "Incorrect: Classical music would be more restrained in its expression.",
+                5: "Correct! This piece shows the Romantic period's characteristic emotional depth and dramatic contrasts.",
+                6: "Incorrect: Modern/Contemporary music would likely use different techniques for expression.",
             },
-            "code": None
+            "audio": "audio/question2.mp3"
         },
         {
             "quiz_num": 3,
-            "title": "Musical Innovation",
-            "question": "Which period saw the development of polyphony and the use of multiple independent melodic lines?",
+            "title": "Question 3",
+            "question": "Listen to this vocal piece with multiple independent melodic lines. Which period does it represent?",
             "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
                 "Classical",
                 "Romantic",
-                "Renaissance",
-                "Modern"
-            ],
-            "answer": 3,
-            "option_chosen": None,
-            "attempts": 0,
-            "feedback": {
-                1: "Incorrect: The Classical period focused more on homophonic texture.",
-                2: "Incorrect: While Romantic music used polyphony, it was developed earlier.",
-                3: "Correct! The Renaissance period was known for its development of polyphony.",
-                4: "Incorrect: Modern music often uses more experimental textures.",
-            },
-            "code": None
-        },
-        {
-            "quiz_num": 4,
-            "title": "Musical Expression",
-            "question": "Which period is characterized by the use of atonality and experimental techniques?",
-            "options": [
-                "Classical",
-                "Romantic",
-                "Renaissance",
-                "Modern"
-            ],
-            "answer": 4,
-            "option_chosen": None,
-            "attempts": 0,
-            "feedback": {
-                1: "Incorrect: Classical music maintained traditional tonal structures.",
-                2: "Incorrect: Romantic music, while emotional, stayed within tonal boundaries.",
-                3: "Incorrect: Renaissance music was strictly tonal and modal.",
-                4: "Correct! Modern music often explores atonality and experimental techniques.",
-            },
-            "code": None
-        },
-        {
-            "quiz_num": 5,
-            "title": "Musical Instruments",
-            "question": "Which period saw the development and standardization of the modern orchestra?",
-            "options": [
-                "Classical",
-                "Romantic",
-                "Renaissance",
-                "Modern"
-            ],
-            "answer": 1,
-            "option_chosen": None,
-            "attempts": 0,
-            "feedback": {
-                1: "Correct! The Classical period saw the development of the modern orchestra.",
-                2: "Incorrect: While Romantic composers expanded the orchestra, it was developed in the Classical period.",
-                3: "Incorrect: The Renaissance period used different instrumental combinations.",
-                4: "Incorrect: Modern music often uses electronic and non-traditional instruments.",
-            },
-            "code": None
-        },
-        {
-            "quiz_num": 6,
-            "title": "Musical Style",
-            "question": "Which period is known for its use of program music and tone poems?",
-            "options": [
-                "Classical",
-                "Romantic",
-                "Renaissance",
-                "Modern"
+                "Modern/Contemporary"
             ],
             "answer": 2,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Incorrect: Classical music focused more on absolute music.",
-                2: "Correct! The Romantic period popularized program music and tone poems.",
-                3: "Incorrect: Renaissance music was primarily religious and secular vocal music.",
-                4: "Incorrect: Modern music often uses more abstract concepts.",
+                1: "Incorrect: Medieval music was primarily monophonic.",
+                2: "Correct! This piece demonstrates the Renaissance period's characteristic polyphonic texture.",
+                3: "Incorrect: While Baroque music used polyphony, this shows Renaissance characteristics.",
+                4: "Incorrect: Classical period would feature more homophonic texture.",
+                5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
+                6: "Incorrect: Modern/Contemporary vocal music would sound quite different.",
             },
-            "code": None
+            "audio": "audio/question3.mp3"
         },
         {
-            "quiz_num": 7,
-            "title": "Musical Innovation",
-            "question": "Which period saw the development of electronic music and computer-generated sounds?",
+            "quiz_num": 4,
+            "title": "Question 4",
+            "question": "This excerpt uses electronic sounds and experimental techniques. Which period does it represent?",
             "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
                 "Classical",
                 "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 6,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music used only acoustic instruments.",
+                2: "Incorrect: Renaissance music predates electronic technology.",
+                3: "Incorrect: Baroque music stayed within acoustic boundaries.",
+                4: "Incorrect: Classical music would use traditional acoustic instruments.",
+                5: "Incorrect: Romantic music stayed within acoustic boundaries.",
+                6: "Correct! This piece shows Modern/Contemporary period's use of electronic and experimental sounds.",
+            },
+            "audio": "audio/question4.mp3"
+        },
+        {
+            "quiz_num": 5,
+            "title": "Question 5",
+            "question": "Listen to this orchestral piece. The balanced instrumentation and clear form suggest which period?",
+            "options": [
+                "Medieval",
                 "Renaissance",
-                "Modern"
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
             ],
             "answer": 4,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Incorrect: Classical music used traditional acoustic instruments.",
-                2: "Incorrect: Romantic music, while innovative, stayed within acoustic boundaries.",
-                3: "Incorrect: Renaissance music predates electronic technology.",
-                4: "Correct! Modern music often incorporates electronic and computer-generated sounds.",
+                1: "Incorrect: Medieval music would use different instruments.",
+                2: "Incorrect: Renaissance music would use different instrumental combinations.",
+                3: "Incorrect: Baroque orchestral music would show different characteristics.",
+                4: "Correct! This piece shows the Classical period's characteristic orchestral writing.",
+                5: "Incorrect: Romantic orchestral music would be more dramatic and expansive.",
+                6: "Incorrect: Modern/Contemporary orchestral music would likely be more experimental.",
             },
-            "code": None
+            "audio": "audio/question5.mp3"
+        },
+        {
+            "quiz_num": 6,
+            "title": "Question 6",
+            "question": "This piece tells a story through music. Which period is known for this style of program music?",
+            "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 5,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music was primarily religious or secular vocal music.",
+                2: "Incorrect: Renaissance music was primarily religious or secular vocal music.",
+                3: "Incorrect: While Baroque music could be programmatic, it was less common.",
+                4: "Incorrect: Classical music focused more on absolute music.",
+                5: "Correct! This piece demonstrates the Romantic period's characteristic program music.",
+                6: "Incorrect: Modern/Contemporary program music would use different techniques.",
+            },
+            "audio": "audio/question6.mp3"
+        },
+        {
+            "quiz_num": 7,
+            "title": "Question 7",
+            "question": "This piece uses computer-generated sounds and non-traditional techniques. Which period does it represent?",
+            "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 6,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music used only traditional acoustic instruments.",
+                2: "Incorrect: Renaissance music predates electronic technology.",
+                3: "Incorrect: Baroque music stayed within acoustic boundaries.",
+                4: "Incorrect: Classical music used traditional acoustic instruments.",
+                5: "Incorrect: Romantic music stayed within acoustic boundaries.",
+                6: "Correct! This piece shows Modern/Contemporary period's innovative use of technology.",
+            },
+            "audio": "audio/question7.mp3"
+        },
+        {
+            "quiz_num": 8,
+            "title": "Question 8",
+            "question": "Listen to this piece with a clear sonata form structure. Which period developed this form?",
+            "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 4,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music predates sonata form.",
+                2: "Incorrect: Renaissance music predates sonata form.",
+                3: "Incorrect: While Baroque music had important forms, sonata form developed later.",
+                4: "Correct! This piece demonstrates the Classical period's development of sonata form.",
+                5: "Incorrect: While Romantic composers used sonata form, it was developed in the Classical period.",
+                6: "Incorrect: Modern/Contemporary music often breaks away from traditional forms.",
+            },
+            "audio": "audio/question8.mp3"
+        },
+        {
+            "quiz_num": 9,
+            "title": "Question 9",
+            "question": "This vocal piece features intricate counterpoint. Which period is known for this style?",
+            "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 2,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music was primarily monophonic.",
+                2: "Correct! This piece demonstrates the Renaissance period's characteristic polyphonic style.",
+                3: "Incorrect: While Baroque music used counterpoint, this shows Renaissance characteristics.",
+                4: "Incorrect: Classical music would be more homophonic.",
+                5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
+                6: "Incorrect: Modern/Contemporary vocal music would sound quite different.",
+            },
+            "audio": "audio/question9.mp3"
+        },
+        {
+            "quiz_num": 10,
+            "title": "Question 10",
+            "question": "This piece shows extreme emotional expression and dynamic contrast. Which period does it represent?",
+            "options": [
+                "Medieval",
+                "Renaissance",
+                "Baroque",
+                "Classical",
+                "Romantic",
+                "Modern/Contemporary"
+            ],
+            "answer": 5,
+            "option_chosen": None,
+            "attempts": 0,
+            "feedback": {
+                1: "Incorrect: Medieval music would be more restrained in expression.",
+                2: "Incorrect: Renaissance music would have a different style of expression.",
+                3: "Incorrect: While Baroque music was expressive, it had different characteristics.",
+                4: "Incorrect: Classical music would be more restrained in its expression.",
+                5: "Correct! This piece shows the Romantic period's characteristic emotional depth.",
+                6: "Incorrect: Modern/Contemporary music would likely use different techniques to express emotion.",
+            },
+            "audio": "audio/question10.mp3"
         }
     ]
 }

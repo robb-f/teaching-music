@@ -28,6 +28,16 @@
         
         <div class="col-md-8">
             <h1>{{ mainQuestion['title'] }}</h1>
+            
+            {% if mainQuestion['audio'] %}
+            <div class="audio-player-container mb-4">
+                <audio id="question-audio" controls class="w-100">
+                    <source src="{{ url_for('static', filename=mainQuestion['audio']) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            {% endif %}
+            
             <p>{{ mainQuestion['question'] }}</p>
             
             {% if mainQuestion['code'] %}
@@ -35,7 +45,7 @@
             {% endif %}
             
             <form id="quiz-form-{{ mainQuestion['quiz_num'] }}" method="POST">
-                {% for choice in range(1, 5) %}
+                {% for choice in range(1, 7) %}
                 <div class="form-check mb-2">
                     <input type="radio" class="form-check-input" name="answer" id="option-{{ choice }}" 
                            value="{{ choice }}" 
@@ -48,16 +58,15 @@
                 {% endfor %}
             </form>
 
-            <button id="submit-btn" class="btn btn-success btn-lg mt-3" onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
-                {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
+            <button id="submit-btn" class="btn btn-success btn-lg mt-3" 
+                    onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
+                    {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
                 <i class="fas fa-paper-plane"></i> Submit Answer
             </button>
-    
             
             <div class="alert alert-info mt-3" role="alert">
                 Attempts left: {{ 2 - mainQuestion['attempts'] }}
-              </div>
-              
+            </div>
             
             <div id="quiz-feedback">
                 {% if mainQuestion['attempts'] > 0 %}
@@ -70,19 +79,19 @@
             <div class="d-flex justify-content-between mt-4">
                 <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] - 1) }}" 
                    class="btn btn-secondary {% if mainQuestion['quiz_num'] - 1 < 1 %}disabled{% endif %}">
-                    Previous
+                    <i class="fas fa-arrow-left"></i> Previous
                 </a>
                 
                 {% if mainQuestion['quiz_num'] == length %}
                 <a id="view-results-btn"
-                    href="{{ url_for('quiz_results') }}"
-                    class="btn btn-primary {% if score is none %}disabled{% endif %}">
-                    View Results
+                   href="{{ url_for('quiz_results') }}"
+                   class="btn btn-primary {% if score is none %}disabled{% endif %}">
+                    View Results <i class="fas fa-chart-bar"></i>
                 </a>
                 {% else %}
                 <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] + 1) }}" 
                    class="btn btn-primary {% if mainQuestion['quiz_num'] == length %}disabled{% endif %}">
-                    Next
+                    Next <i class="fas fa-arrow-right"></i>
                 </a>
                 {% endif %}
             </div>
@@ -91,6 +100,15 @@
 </div>
 
 <script>
+    // Stop audio when navigating away
+    window.addEventListener('beforeunload', function() {
+        const audio = document.getElementById('question-audio');
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    });
+
     function handleAnswer(quiz_num) {
         const selectedOption = document.querySelector('input[name="answer"]:checked');
         
@@ -118,10 +136,8 @@
                 `;
             }
 
-            // disable submit
             if (data.disable_submit) {
                 document.getElementById('submit-btn').disabled = true;
-    
                 document.querySelectorAll('input[name="answer"]').forEach(input => {
                     input.disabled = true;
                 });
@@ -132,17 +148,17 @@
             if (attemptsAlert) {
                 attemptsAlert.innerHTML = `Attempts left: ${attempts}`;
             }
+            
             if (data.quiz_complete) {
-            const resultsLink = document.getElementById('view-results-btn');
-            if (resultsLink) resultsLink.classList.remove('disabled');
-        }
+                const resultsLink = document.getElementById('view-results-btn');
+                if (resultsLink) resultsLink.classList.remove('disabled');
+            }
         })
         .catch(error => {
             console.error('Error submitting answer:', error);
             alert('There was an error submitting your answer. Please try again.');
         });
     }
-    </script>
-
+</script>
 
 {% endblock %}
