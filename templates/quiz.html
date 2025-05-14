@@ -1,34 +1,42 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Questions</h2>
-            <div class="list-group">
-                {% for quiz in data.quizzes %}
-                <a href="{{ url_for('quiz', quiz_num=quiz['quiz_num']) }}" 
-                   class="list-group-item list-group-item-action {% if quiz['attempts'] > 0 %}quiz-completed{% endif %} {% if mainQuestion['quiz_num'] == quiz['quiz_num'] %}active{% endif %}">
-                    {% if quiz['option_chosen'] == quiz['answer'] %}
-                        <i class="fas fa-check-circle correct"></i>
-                    {% elif quiz['attempts'] > 0 %}
-                        <i class="fas fa-times-circle incorrect"></i>
-                    {% else %}
-                        <i class="far fa-circle incomplete"></i>
-                    {% endif %}
-                    {{ quiz['title'] }}
-                </a>
-                {% endfor %}
-                <a href="{{ url_for('quiz_results') }}" 
-                   class="list-group-item list-group-item-action {% if score == None %}disabled{% endif %}">
-                    Quiz Results
-                </a>
-            </div>
-        </div>
+<div class="container-fluid">
+    <div class="row g-0">
+        <aside class="col-12 col-md-4 col-lg-3 bg-light border-end vh-100 overflow-auto sticky-top pt-4">
+            <h5 class="px-3 mb-0 fw-semibold text-secondary">Quiz Progress</h5>
         
-        <div class="col-md-8">
-            <h1>{{ mainQuestion['title'] }}</h1>
-            
+
+            {% set pct = answered_percent|default(0)|int %}
+            <div class="progress mx-3 my-3" style="height: 6px;">
+            <div class="progress-bar bg-success" role="progressbar"
+                style="width: {{ pct }}%;" aria-valuenow="{{ pct }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        
+
+            <div class="list-group list-group-flush">
+            {% for quiz in data.quizzes %}
+            <a href="{{ url_for('quiz', quiz_num=quiz['quiz_num']) }}"
+                class="list-group-item list-group-item-action d-flex align-items-center justify-content-start gap-2 {% if quiz['quiz_num'] == mainQuestion['quiz_num'] %}active{% endif %}">
+                {% if quiz['option_chosen'] == quiz['answer'] %}
+                <i class="fas fa-check-circle text-success"></i>
+                {% elif quiz['attempts'] > 0 %}
+                <i class="fas fa-times-circle text-danger"></i>
+                {% else %}
+                <i class="far fa-circle text-muted"></i>
+                {% endif %}
+                <span class="text-truncate">{{ loop.index }}. {{ quiz['title'] }}</span>
+            </a>
+            {% endfor %}
+            <a href="{{ url_for('quiz_results') }}"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 {% if score is none %}disabled{% endif %}">
+                <i class="fas fa-chart-bar"></i> Results
+            </a>
+            </div>
+        </aside>
+  
+        
+        <div class="col-md-8 ps-4">
             {% if mainQuestion['audio'] %}
             <div class="audio-player-container mb-4">
                 <audio id="question-audio" controls class="w-100">
@@ -37,15 +45,15 @@
                 </audio>
             </div>
             {% endif %}
-            
-            <p>{{ mainQuestion['question'] }}</p>
+            <h2 class="fw-bold mb-3">{{ mainQuestion['title'] }}</h2>
+            <p class="lead mb-4" style="line-height: 1.6;">{{ mainQuestion['question'] }}</p>
             
             {% if mainQuestion['code'] %}
             <pre><code class="language-python">{{ mainQuestion['code'] }}</code></pre>
             {% endif %}
             
             <form id="quiz-form-{{ mainQuestion['quiz_num'] }}" method="POST">
-                {% for choice in range(1, 7) %}
+                {% for choice in range(1, mainQuestion['options']|length + 1) %}
                 <div class="form-check mb-2">
                     <input type="radio" class="form-check-input" name="answer" id="option-{{ choice }}" 
                            value="{{ choice }}" 
@@ -58,40 +66,41 @@
                 {% endfor %}
             </form>
 
-            <button id="submit-btn" class="btn btn-success btn-lg mt-3" 
-                    onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
-                    {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
+            <button id="submit-btn" class="btn btn-success btn-lg mt-3" onclick="handleAnswer({{ mainQuestion['quiz_num'] }})"
+                {% if mainQuestion['attempts']==2 or mainQuestion['option_chosen']==mainQuestion['answer'] %}disabled{% endif %}>
                 <i class="fas fa-paper-plane"></i> Submit Answer
             </button>
+    
             
             <div class="alert alert-info mt-3" role="alert">
                 Attempts left: {{ 2 - mainQuestion['attempts'] }}
-            </div>
+              </div>
+              
             
             <div id="quiz-feedback">
                 {% if mainQuestion['attempts'] > 0 %}
-                <div class="alert {% if mainQuestion['option_chosen'] == mainQuestion['answer'] %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                <p class="{% if mainQuestion['option_chosen'] == mainQuestion['answer'] %}text-success{% else %}text-danger{% endif %}">
                     {{ mainQuestion['feedback'].get(mainQuestion['option_chosen'], '') }}
-                </div>
+                </p>
                 {% endif %}
             </div>
 
             <div class="d-flex justify-content-between mt-4">
                 <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] - 1) }}" 
                    class="btn btn-secondary {% if mainQuestion['quiz_num'] - 1 < 1 %}disabled{% endif %}">
-                    <i class="fas fa-arrow-left"></i> Previous
+                    Previous
                 </a>
                 
                 {% if mainQuestion['quiz_num'] == length %}
                 <a id="view-results-btn"
-                   href="{{ url_for('quiz_results') }}"
-                   class="btn btn-primary {% if score is none %}disabled{% endif %}">
-                    View Results <i class="fas fa-chart-bar"></i>
+                    href="{{ url_for('quiz_results') }}"
+                    class="btn btn-primary {% if score is none %}disabled{% endif %}">
+                    View Results
                 </a>
                 {% else %}
                 <a href="{{ url_for('quiz', quiz_num=mainQuestion['quiz_num'] + 1) }}" 
                    class="btn btn-primary {% if mainQuestion['quiz_num'] == length %}disabled{% endif %}">
-                    Next <i class="fas fa-arrow-right"></i>
+                    Next
                 </a>
                 {% endif %}
             </div>
@@ -100,15 +109,6 @@
 </div>
 
 <script>
-    // Stop audio when navigating away
-    window.addEventListener('beforeunload', function() {
-        const audio = document.getElementById('question-audio');
-        if (audio) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
-    });
-
     function handleAnswer(quiz_num) {
         const selectedOption = document.querySelector('input[name="answer"]:checked');
         
@@ -136,8 +136,10 @@
                 `;
             }
 
+            // disable submit
             if (data.disable_submit) {
                 document.getElementById('submit-btn').disabled = true;
+    
                 document.querySelectorAll('input[name="answer"]').forEach(input => {
                     input.disabled = true;
                 });
@@ -148,60 +150,17 @@
             if (attemptsAlert) {
                 attemptsAlert.innerHTML = `Attempts left: ${attempts}`;
             }
-            
             if (data.quiz_complete) {
-                const resultsLink = document.getElementById('view-results-btn');
-                if (resultsLink) resultsLink.classList.remove('disabled');
-            }
-
-            // Update the sidebar icon for this question
-            const questionLink = document.querySelector(`a[href="/quiz/${quiz_num}/"]`);
-            if (questionLink) {
-                const icon = questionLink.querySelector('i');
-                if (icon) {
-                    if (data.correct) {
-                        icon.className = 'fas fa-check-circle text-success';
-                    } else {
-                        icon.className = 'fas fa-times-circle text-danger';
-                    }
-                }
-            }
-
-            // Reload the page to ensure all state is updated
-            window.location.reload();
+            const resultsLink = document.getElementById('view-results-btn');
+            if (resultsLink) resultsLink.classList.remove('disabled');
+        }
         })
         .catch(error => {
             console.error('Error submitting answer:', error);
             alert('There was an error submitting your answer. Please try again.');
         });
     }
-</script>
+    </script>
 
-<style>
-.sidebar-circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border: 2px solid #bbb;
-    border-radius: 50%;
-    margin-right: 10px;
-    font-size: 16px;
-    background: #fff;
-    vertical-align: middle;
-}
-.sidebar-circle i, .sidebar-circle .empty-circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    line-height: 1;
-}
-.sidebar-circle .empty-circle {
-    background: transparent;
-}
-</style>
 
 {% endblock %}

@@ -45,7 +45,7 @@ app_data = {
                 2: "Incorrect: Renaissance music would have a different style of expression.",
                 3: "Incorrect: Baroque music, while expressive, would show different characteristics.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Incorrect: Romantic music would have a different style of expression.",
+                5: "Correct! Romantic music is known for dramatic dynamics and emotional expression.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques for expression.",
             },
             "audio": "audio/question2.mp3"
@@ -237,15 +237,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 3,
+            "answer": 5,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music would be more restrained in expression.",
                 2: "Incorrect: Renaissance music would have a different style of expression.",
-                3: "Incorrect: While Baroque music was expressive, it had different characteristics.",
+                3: "Incorrect: Baroque music was expressive, but not as emotionally intense or dynamically extreme.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Incorrect: Romantic music would have a different style of expression.",
+                5: "Correct! Romantic music is known for emotional intensity and extreme dynamic contrasts.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques to express emotion.",
             },
             "audio": "audio/question10.mp3"

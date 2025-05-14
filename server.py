@@ -183,7 +183,18 @@ def quiz(quiz_num):
     quiz_started = True
        
     score = score_quiz()
-    return render_template('quiz.html', mainQuestion=question, data=data, length=len(data["quizzes"]), score=score)
+    answered = sum(1 for q in data["quizzes"]
+                if q.get("option_chosen") is not None)
+    answered_percent = answered * 100 / len(data["quizzes"])
+    return render_template(
+            "quiz.html",
+            mainQuestion=question,
+            data=data,
+            length=len(data["quizzes"]),
+            score=score,
+            answered_percent=answered_percent
+)
+    
 
 # Results page
 @app.route('/results')

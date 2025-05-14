@@ -28,9 +28,15 @@
               <strong>Correct answer:</strong>
             {% endif %}
             {{ opt }}
+            {% if q.feedback[idx] %}
+              <div class="mt-2 text-muted" style="font-size: 0.9rem;">
+                {{ q.feedback[idx] }}
+              </div>
+            {% endif %}
           </li>
         {% endfor %}
       </ul>
+      
     </div>
   {% endfor %}
 
