@@ -3,7 +3,7 @@ app_data = {
         {
             "quiz_num": 1,
             "title": "Question 1",
-            "question": "Listen to this excerpt and identify the musical period. This piece features clear, balanced phrases and a structured form typical of which period?",
+            "question": "Listen to this excerpt and identify the musical period. This piece features gradual dynamic changes and dense orchestral textures, characteristic of which period?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -28,7 +28,7 @@ app_data = {
         {
             "quiz_num": 2,
             "title": "Question 2",
-            "question": "This excerpt features dramatic dynamics and emotional expression. Which period does it represent?",
+            "question": "This excerpt features a clear melodic and harmonic structure. Which period does it represent?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -37,15 +37,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 5,
+            "answer": 3,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music would be more monophonic and less expressive.",
                 2: "Incorrect: Renaissance music would have a different style of expression.",
-                3: "Incorrect: Baroque music, while expressive, would show different characteristics.",
+                3: "Correct!: Baroque music features the harpsichord, present here.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Correct! Romantic music is known for dramatic dynamics and emotional expression.",
+                5: "Incorrect: Romantic music is known for dramatic dynamics and emotional expression.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques for expression.",
             },
             "audio": "audio/question2.mp3"
@@ -53,7 +53,7 @@ app_data = {
         {
             "quiz_num": 3,
             "title": "Question 3",
-            "question": "Listen to this vocal piece with multiple independent melodic lines. Which period does it represent?",
+            "question": "Listen to this concerto with exaggerated dynamics and lack of harmony. Which period does it represent?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -71,14 +71,14 @@ app_data = {
                 3: "Incorrect: While Baroque music used polyphony, this shows Renaissance characteristics.",
                 4: "Incorrect: Classical period would feature more homophonic texture.",
                 5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
-                6: "Correct! This piece demonstrates the Modern/Contemporary period's characteristic polyphonic texture.",
+                6: "Correct! This piece demonstrates the Modern/Contemporary period's characteristic wildness.",
             },
             "audio": "audio/question3.mp3"
         },
         {
             "quiz_num": 4,
             "title": "Question 4",
-            "question": "This excerpt uses electronic sounds and experimental techniques. Which period does it represent?",
+            "question": "This excerpt uses sudden changes in volume and contrasting harmonies. Which period does it represent?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -103,7 +103,7 @@ app_data = {
         {
             "quiz_num": 5,
             "title": "Question 5",
-            "question": "Listen to this orchestral piece. The balanced instrumentation and clear form suggest which period?",
+            "question": "Listen to this orchestral piece. The type of song suggests it is from which period?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -128,7 +128,7 @@ app_data = {
         {
             "quiz_num": 6,
             "title": "Question 6",
-            "question": "This piece tells a story through music. Which period is known for this style of program music?",
+            "question": "This piece features vocalists singing at different times. Which period is known for this style of program music?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -142,7 +142,7 @@ app_data = {
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music was primarily religious or secular vocal music.",
-                2: "Correct! This piece demonstrates the Renaissance period's characteristic program music.",
+                2: "Correct! This piece demonstrates the Renaissance period's characteristic of staggered entrances.",
                 3: "Incorrect: While Baroque music could be programmatic, it was less common.",
                 4: "Incorrect: Classical music focused more on absolute music.",
                 5: "Incorrect: Romantic period would have a different style of program music.",
@@ -153,7 +153,7 @@ app_data = {
         {
             "quiz_num": 7,
             "title": "Question 7",
-            "question": "This piece uses computer-generated sounds and non-traditional techniques. Which period does it represent?",
+            "question": "This vocal piece features one singer, before many singers join in together. Which period does it represent?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -166,7 +166,7 @@ app_data = {
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
-                1: "Correct! This piece shows the Medieval period's use of traditional acoustic instruments.",
+                1: "Correct! This piece shows the Medieval period's use of homophony.",
                 2: "Incorrect: Renaissance music predates electronic technology.",
                 3: "Incorrect: Baroque music stayed within acoustic boundaries.",
                 4: "Incorrect: Classical music used traditional acoustic instruments.",
@@ -203,7 +203,7 @@ app_data = {
         {
             "quiz_num": 9,
             "title": "Question 9",
-            "question": "This vocal piece features intricate counterpoint. Which period is known for this style?",
+            "question": "This elegant concerto makes use of suddenly changing dynamics. Which period is known for this style?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -219,7 +219,7 @@ app_data = {
                 1: "Incorrect: Medieval music was primarily monophonic.",
                 2: "Incorrect: Renaissance music would use different instrumental combinations.",
                 3: "Incorrect: While Baroque music used counterpoint, this shows Renaissance characteristics.",
-                4: "Correct! This piece demonstrates the Classical period's characteristic polyphonic style.",
+                4: "Correct! This piece demonstrates the Classical period's characteristic dynamic style.",
                 5: "Incorrect: While Romantic music can be complex, this shows Renaissance polyphony.",
                 6: "Incorrect: Modern/Contemporary vocal music would sound quite different.",
             },
@@ -228,7 +228,7 @@ app_data = {
         {
             "quiz_num": 10,
             "title": "Question 10",
-            "question": "This piece shows extreme emotional expression and dynamic contrast. Which period does it represent?",
+            "question": "This dance-like piece is played with a small ensemble. Which period does it represent?",
             "options": [
                 "Medieval",
                 "Renaissance",
@@ -237,15 +237,15 @@ app_data = {
                 "Romantic",
                 "Modern/Contemporary"
             ],
-            "answer": 5,
+            "answer": 3,
             "option_chosen": None,
             "attempts": 0,
             "feedback": {
                 1: "Incorrect: Medieval music would be more restrained in expression.",
                 2: "Incorrect: Renaissance music would have a different style of expression.",
-                3: "Incorrect: Baroque music was expressive, but not as emotionally intense or dynamically extreme.",
+                3: "Correct!: Baroque music thoroughly featured the harpsichord, which is present here.",
                 4: "Incorrect: Classical music would be more restrained in its expression.",
-                5: "Correct! Romantic music is known for emotional intensity and extreme dynamic contrasts.",
+                5: "Incorrect Romantic music is known for emotional intensity and extreme dynamic contrasts.",
                 6: "Incorrect: Modern/Contemporary music would likely use different techniques to express emotion.",
             },
             "audio": "audio/question10.mp3"
